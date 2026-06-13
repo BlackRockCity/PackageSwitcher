@@ -1,17 +1,14 @@
-<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; margin: 0; padding: 0;">
-  <tr>
-    <td valign="middle" style="border: 0; padding: 0 24px 0 0; margin: 0;">
-      <h1 style="margin: 0 0 8px 0; padding: 0; border-bottom: 0;">PackageSwitcher</h1>
-      <p style="margin: 0; padding: 0;">
-        PackageSwitcher is a native macOS utility for switching the shell environment in your existing
-        <code>.bash_profile</code> between Homebrew and MacPorts.
-      </p>
-    </td>
-    <td width="96" align="right" valign="top" style="border: 0; padding: 12px 0 0 0; margin: 0;">
-      <img src="./docs/assets/AppIcon-iOS-Default-1024x1024@1x.png" alt="PackageSwitcher icon" width="88" style="display: block; margin: 0; padding: 0;">
-    </td>
-  </tr>
-</table>
+
+<h1>PackageSwitcher</h1>
+<img src="./docs/assets/AppIcon-iOS-Default-1024x1024@1x.png" alt="PackageSwitcher icon" width="90" align="right">
+
+<p>
+  PackageSwitcher is a native macOS utility for switching the shell environment in your existing
+  <code>.bash_profile</code> between Homebrew and MacPorts.
+</p>
+
+
+
 
 ## Overview
 
