@@ -12,9 +12,9 @@
 
 ## Overview
 
-Package Switcher is designed for people who use Homebrew and MacPorts on the same Mac and want a clearer, safer way to choose which package manager takes precedence in new Terminal sessions.
+PackageSwitcher is designed for people who use Homebrew and MacPorts on the same Mac and want a clearer, safer way to choose which package manager takes precedence in new Terminal sessions.
 
-Both package managers can coexist. When they provide commands with the same name, the version found earlier in `PATH` usually runs. Package Switcher makes the relevant profile lines visible, previews the result, and shows a diff before writing any changes.
+Both package managers can coexist. When they provide commands with the same name, the version found earlier in `PATH` usually runs. PackageSwitcher makes the relevant profile lines visible, previews the result, and shows a diff before writing any changes.
 
 ## Is This Even a Good Idea?
 
@@ -26,7 +26,7 @@ MacPorts has some security advantages because it requires `sudo` before installi
 - Each package manager adds directories to the shell environment.
 - `PATH` order determines which copy of an overlapping command runs.
 - Manual startup-file edits are easy to mistype or apply inconsistently.
-- Package Switcher exposes the active state and the exact proposed changes.
+- PackageSwitcher exposes the active state and the exact proposed changes.
 - Each package manager has some packages which are unique.
 
 ## What It Does
@@ -51,7 +51,7 @@ MacPorts has some security advantages because it requires `sudo` before installi
 
 - Warns when expected Homebrew or MacPorts installation paths are unavailable.
 
-Package Switcher does not use managed block markers and does not modify `.zprofile`, `.zshrc`, or other shell startup files.
+PackageSwitcher does not use managed block markers and does not modify `.zprofile`, `.zshrc`, or other shell startup files.
 
 ## What It Does Not Do
 
@@ -94,11 +94,11 @@ Package Switcher does not use managed block markers and does not modify `.zprofi
 
 ## Installation
 
-There is currently no packaged or notarized release documented in this repository. Build Package Switcher from source using Xcode.
+There is currently no packaged or notarized release documented in this repository. Build PackageSwitcher from source using Xcode.
 
 ## Usage
 
-1. Launch Package Switcher.
+1. Launch PackageSwitcher.
 2. Review the detected active package manager and profile path.
 3. Select Homebrew or MacPorts.
 4. Inspect **Preview After Applying** and **Diff**.
@@ -107,7 +107,7 @@ There is currently no packaged or notarized release documented in this repositor
 
 ## Safety and Recovery
 
-Package Switcher edits shell startup configuration. Review the preview and diff before applying a change.
+PackageSwitcher edits shell startup configuration. Review the preview and diff before applying a change.
 
 Before writing, the app saves the current `.bash_profile` in the same directory using a timestamped filename. To restore one manually:
 
@@ -121,11 +121,11 @@ Replace the timestamp with the backup you want to restore. You can also make you
 cp ~/.bash_profile ~/.bash_profile.backup
 ```
 
-Back up only the shell profile you actually use. Package Switcher itself edits `.bash_profile` only.
+Back up only the shell profile you actually use. PackageSwitcher itself edits `.bash_profile` only.
 
 ## Localization
 
-Package Switcher currently ships with these localizations:
+PackageSwitcher currently ships with these localizations:
 
 |                                                          |                                                                                         |
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -164,7 +164,7 @@ brew --prefix
 port version
 ```
 
-Package Switcher expects:
+PackageSwitcher expects:
 
 - Homebrew at `/opt/homebrew/bin/brew`
 - MacPorts directories at `/opt/local/bin` and `/opt/local/sbin`
@@ -197,10 +197,10 @@ xcodebuild \
 
 ## Support
 
-If Package Switcher saves you time or helps you manage a dual Homebrew/MacPorts setup, you can support development here:
+If PackageSwitcher saves you time or helps you manage a dual Homebrew/MacPorts setup, you can support development here:
 
 ☕ https://buymeacoffee.com/blackrockcity
 
 ## License
 
-Package Switcher is licensed under the [GNU General Public License version 3](LICENSE).
+PackageSwitcher is licensed under the [GNU General Public License version 3](LICENSE).
