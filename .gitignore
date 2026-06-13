@@ -1,0 +1,7 @@
+/docs/superpowers/
+/Icon work/
+
+
+# Xcode user-specific workspace/project state
+xcuserdata/
+*.xcuserstate

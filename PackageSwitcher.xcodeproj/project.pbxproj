@@ -14,6 +14,11 @@
 		3D2F257C2C34FBB6007F2534 /* PackageSwitcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F257B2C34FBB6007F2534 /* PackageSwitcherTests.swift */; };
 		3D2F25862C34FBB6007F2534 /* PackageSwitcherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F25852C34FBB6007F2534 /* PackageSwitcherUITests.swift */; };
 		3D2F25882C34FBB6007F2534 /* PackageSwitcherUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F25872C34FBB6007F2534 /* PackageSwitcherUITestsLaunchTests.swift */; };
+		3D4A5E6A2FDD2D070039DC8B /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 3D4A5E692FDD2D070039DC8B /* AppIcon.icon */; };
+		4A01B0012DFF000100000001 /* PackageSwitcherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01B0002DFF000100000001 /* PackageSwitcherService.swift */; };
+		4A01B0032DFF000100000001 /* PackageSwitcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01B0022DFF000100000001 /* PackageSwitcherViewModel.swift */; };
+		4A01B0052DFF000100000001 /* ProfilePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01B0042DFF000100000001 /* ProfilePreview.swift */; };
+		4A01B0072DFF000100000001 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4A01B0062DFF000100000001 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		3D2F25812C34FBB6007F2534 /* PackageSwitcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PackageSwitcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D2F25852C34FBB6007F2534 /* PackageSwitcherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageSwitcherUITests.swift; sourceTree = "<group>"; };
 		3D2F25872C34FBB6007F2534 /* PackageSwitcherUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageSwitcherUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3D4A5E692FDD2D070039DC8B /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		4A01B0002DFF000100000001 /* PackageSwitcherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageSwitcherService.swift; sourceTree = "<group>"; };
+		4A01B0022DFF000100000001 /* PackageSwitcherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageSwitcherViewModel.swift; sourceTree = "<group>"; };
+		4A01B0042DFF000100000001 /* ProfilePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePreview.swift; sourceTree = "<group>"; };
+		4A01B0062DFF000100000001 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +107,12 @@
 			children = (
 				3D2F25692C34FBB4007F2534 /* PackageSwitcherApp.swift */,
 				3D2F256B2C34FBB4007F2534 /* ContentView.swift */,
+				4A01B0002DFF000100000001 /* PackageSwitcherService.swift */,
+				4A01B0022DFF000100000001 /* PackageSwitcherViewModel.swift */,
+				4A01B0042DFF000100000001 /* ProfilePreview.swift */,
+				4A01B0062DFF000100000001 /* Localizable.xcstrings */,
 				3D2F256D2C34FBB5007F2534 /* Assets.xcassets */,
+				3D4A5E692FDD2D070039DC8B /* AppIcon.icon */,
 				3D2F25722C34FBB5007F2534 /* PackageSwitcher.entitlements */,
 				3D2F256F2C34FBB5007F2534 /* Preview Content */,
 			);
@@ -215,6 +230,15 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				es,
+				fr,
+				de,
+				ja,
+				ko,
+				pt,
+				ar,
+				hi,
 			);
 			mainGroup = 3D2F255D2C34FBB4007F2534;
 			productRefGroup = 3D2F25672C34FBB4007F2534 /* Products */;
@@ -234,7 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D2F25712C34FBB5007F2534 /* Preview Assets.xcassets in Resources */,
+				3D4A5E6A2FDD2D070039DC8B /* AppIcon.icon in Resources */,
 				3D2F256E2C34FBB5007F2534 /* Assets.xcassets in Resources */,
+				4A01B0072DFF000100000001 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +286,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D2F256C2C34FBB4007F2534 /* ContentView.swift in Sources */,
+				4A01B0012DFF000100000001 /* PackageSwitcherService.swift in Sources */,
+				4A01B0032DFF000100000001 /* PackageSwitcherViewModel.swift in Sources */,
+				4A01B0052DFF000100000001 /* ProfilePreview.swift in Sources */,
 				3D2F256A2C34FBB4007F2534 /* PackageSwitcherApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,7 +330,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -364,7 +395,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -420,12 +453,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PackageSwitcher/PackageSwitcher.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PackageSwitcher/Preview Content\"";
-				DEVELOPMENT_TEAM = LTQG6T6AHA;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -437,6 +472,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.buddah.PackageSwitcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -447,12 +483,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PackageSwitcher/PackageSwitcher.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PackageSwitcher/Preview Content\"";
-				DEVELOPMENT_TEAM = LTQG6T6AHA;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -464,6 +502,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.buddah.PackageSwitcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -473,6 +512,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -492,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -511,6 +552,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LTQG6T6AHA;
@@ -528,6 +570,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LTQG6T6AHA;
