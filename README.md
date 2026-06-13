@@ -18,7 +18,7 @@ Both package managers can coexist. When they provide commands with the same name
 
 ## Is This Even a Good Idea?
 
-MacPorts has some security advantages because it requires `sudo` before installing packages, while Homebrew offers some packages that are not available in MacPorts. I decided to complicate my life by using both package managers, and PackageSwitcher makes it easier to switch between them. I have used this workflow for over two years and found it useful. If you are reading this and think there is a better approach, critique is welcome. Maybe I will learn something!
+MacPorts has some security advantages because it requires `sudo` before installing packages, while Homebrew offers some packages that are not available in MacPorts. I decided to complicate my life by using both package managers, and PackageSwitcher makes it easier to switch between them. I have used this workflow and found it useful. If you are reading this and think there is a better approach, critique is welcome. Maybe I will learn something!
 
 ## Why This Exists
 
@@ -94,7 +94,9 @@ PackageSwitcher does not use managed block markers and does not modify `.zprofil
 
 ## Installation
 
-There is currently no packaged or notarized release documented in this repository. Build PackageSwitcher from source using Xcode.
+v1.0.0 release is in this repository. Download, unzip, move it to your applications directory, and right click to open it. 
+
+Alternatively, build PackageSwitcher from source using Xcode.
 
 ## Usage
 
