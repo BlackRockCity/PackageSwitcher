@@ -135,7 +135,7 @@ PackageSwitcher currently ships with these localizations:
 
 Arabic includes right-to-left interface support. Shell commands, paths, and environment variables remain left-to-right for readability and accuracy.
 
-The app follows the language selected by macOS. Flags, if used as visual scanning aids in language-selection interfaces, should not be interpreted as claiming that a language belongs to one country or region.
+The app follows the language selected by macOS. 
 
 ## Screenshots
 
