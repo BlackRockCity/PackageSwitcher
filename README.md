@@ -7,7 +7,8 @@ Package Switcher is a native macOS utility for switching the shell environment i
 Package Switcher is designed for people who use Homebrew and MacPorts on the same Mac and want a clearer, safer way to choose which package manager takes precedence in new Terminal sessions.
 
 Both package managers can coexist. When they provide commands with the same name, the version found earlier in `PATH` usually runs. Package Switcher makes the relevant profile lines visible, previews the result, and shows a diff before writing any changes.
-## Is this even a good idea?
+
+## Is This Even a Good Idea?
 MacPorts has some security advantages because it requires `sudo` before installing packages, while Homebrew offers some packages that are not available in MacPorts. I decided to complicate my life by using both package managers, and PackageSwitcher makes it easier to switch between them. I have used this workflow for over two years and found it useful. If you are reading this and think there is a better approach, critique is welcome. Maybe I will learn something!
 
 ## Why This Exists
