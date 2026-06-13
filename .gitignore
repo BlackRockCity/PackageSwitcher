@@ -5,3 +5,6 @@
 # Xcode user-specific workspace/project state
 xcuserdata/
 *.xcuserstate
+
+# Release build artifacts
+dist/
