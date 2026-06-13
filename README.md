@@ -121,17 +121,20 @@ Arabic includes right-to-left interface support. Shell commands, paths, and envi
 The app follows the language selected by macOS. Flags, if used as visual scanning aids in language-selection interfaces, should not be interpreted as claiming that a language belongs to one country or region.
 
 ## Screenshots
+
+PackageSwitcher shows the current `.bash_profile`, a preview of what will be written, and a diff view so you can verify the exact changes before applying them.
+
 ### Current Profile
+
 ![PackageSwitcher current profile screenshot](./docs/screenshots/v1/screenshot1.png)
+
 ### Preview After Applying
+
 ![PackageSwitcher preview after applying screenshot](./docs/screenshots/v1/screenshot2.png)
+
 ### Diff View
 
 ![PackageSwitcher diff view screenshot](./docs/screenshots/v1/screenshot3.png)
-
-![Package Switcher main window](docs/App_Screenshot.png)
-
-![Package Switcher preview or diff view](docs/Diff_Screenshot.png)
 
 ## Troubleshooting
 
