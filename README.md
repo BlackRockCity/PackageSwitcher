@@ -94,7 +94,7 @@ PackageSwitcher does not use managed block markers and does not modify `.zprofil
 
 ## Installation
 
-v1.0.0 release is in this repository. Download, unzip, move it to your applications directory, and right click to open it. 
+v1.0.1 release is in this repository. Download, unzip, move it to your applications directory, and right click to open it. 
 
 Alternatively, build PackageSwitcher from source using Xcode.
 
