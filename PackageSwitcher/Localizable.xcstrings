@@ -3582,61 +3582,61 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Support development"
+            "value": "☕ Buy me a coffee"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "支持开发"
+            "value": "☕ 请我喝杯咖啡"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apoyar el desarrollo"
+            "value": "☕ Invítame a un café"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Soutenir le développement"
+            "value": "☕ Offrez-moi un café"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Entwicklung unterstützen"
+            "value": "☕ Spendier mir einen Kaffee"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "開発を支援"
+            "value": "☕ コーヒーをおごる"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "개발 지원"
+            "value": "☕ 커피 한 잔 후원하기"
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apoiar o desenvolvimento"
+            "value": "☕ Pague-me um café"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "دعم التطوير"
+            "value": "☕ اشترِ لي قهوة"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "विकास में सहयोग करें"
+            "value": "☕ मुझे कॉफ़ी पिलाएँ"
           }
         }
       }

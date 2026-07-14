@@ -152,16 +152,18 @@ struct ProfilePreview: View {
             }
             .environment(\.layoutDirection, .leftToRight)
         }
-        .frame(minHeight: 250, idealHeight: 290, maxHeight: .infinity)
+        .frame(minHeight: 130, idealHeight: 240, maxHeight: .infinity)
         .background(
-            Color(nsColor: .textBackgroundColor),
-            in: RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(nsColor: .textBackgroundColor))
+                .overlay(Color.primary.opacity(0.025))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+                .stroke(Color.primary.opacity(0.16), lineWidth: 1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .shadow(color: Color.black.opacity(0.18), radius: 18, x: 0, y: 7)
         .accessibilityIdentifier("profilePreviewCode")
     }
 }

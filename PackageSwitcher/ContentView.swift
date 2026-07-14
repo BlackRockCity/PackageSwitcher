@@ -6,9 +6,23 @@
 //
 
 import SwiftUI
+import AppKit
 
 struct ContentView: View {
+    private enum Layout {
+        static let collapsedWindowSize = NSSize(width: 760, height: 730)
+        static let defaultExpandedWindowSize = NSSize(width: 900, height: 900)
+        static let minWidth = collapsedWindowSize.width
+        static let idealWidth = defaultExpandedWindowSize.width
+        static let expandedMinHeight: CGFloat = 944
+        static let expandedPreviewSectionMinHeight: CGFloat = 250
+    }
+
     @StateObject private var viewModel: PackageSwitcherViewModel
+    @AppStorage("isProfilePreviewExpanded") private var isProfilePreviewExpanded = true
+    @AppStorage("expandedWindowWidth") private var expandedWindowWidth = Double(Layout.defaultExpandedWindowSize.width)
+    @AppStorage("expandedWindowHeight") private var expandedWindowHeight = Double(Layout.defaultExpandedWindowSize.height)
+    @State private var hostingWindow: NSWindow?
 
     @MainActor
     init(viewModel: PackageSwitcherViewModel? = nil) {
@@ -17,31 +31,49 @@ struct ContentView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
-                VStack(alignment: .leading, spacing: 18) {
-                    header
-                    statusCard
-                    profileRow
-                    switchSection
-                    actionSection
-                    messagesSection
-                    previewSection(
-                        minHeight: max(250, geometry.size.height - 560)
-                    )
-                        .frame(maxHeight: .infinity)
-                        .layoutPriority(1)
-                    supportFooter
-                }
-                .padding(24)
-                .frame(
-                    minHeight: max(geometry.size.height - 48, 0),
-                    alignment: .top
+            VStack(alignment: .leading, spacing: 18) {
+                header
+                statusCard
+                profileRow
+                switchSection
+                actionSection
+                messagesSection
+                previewSection(
+                    minHeight: Layout.expandedPreviewSectionMinHeight
                 )
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxHeight: isProfilePreviewExpanded ? .infinity : nil)
+                .layoutPriority(isProfilePreviewExpanded ? 1 : 0)
+                if !isProfilePreviewExpanded {
+                    Spacer(minLength: 0)
+                }
+                supportFooter
             }
+            .padding(24)
+            .frame(
+                minHeight: max(geometry.size.height - 48, 0),
+                alignment: .top
+            )
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .background(Color(nsColor: .windowBackgroundColor))
-        .frame(minWidth: 760, idealWidth: 860, minHeight: 720, idealHeight: 780)
+        .background(
+            WindowReader(window: $hostingWindow) { window in
+                configureWindow(window, expanded: isProfilePreviewExpanded, animate: false)
+            }
+        )
+        .frame(
+            minWidth: Layout.minWidth,
+            idealWidth: Layout.idealWidth,
+            minHeight: isProfilePreviewExpanded ? Layout.expandedMinHeight : nil,
+            idealHeight: isProfilePreviewExpanded ? preferredExpandedWindowSize.height : nil
+        )
+        .onChange(of: isProfilePreviewExpanded) { _, isExpanded in
+            guard let hostingWindow else { return }
+            if !isExpanded {
+                rememberExpandedWindowSize(hostingWindow)
+            }
+            configureWindow(hostingWindow, expanded: isExpanded, animate: true)
+        }
     }
 
     private var header: some View {
@@ -224,28 +256,34 @@ struct ContentView: View {
     }
 
     private func previewSection(minHeight: CGFloat) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ViewThatFits(in: .horizontal) {
-                HStack(spacing: 16) {
-                    previewHeading
-                    Spacer()
-                    previewPicker
-                }
+        DisclosureGroup(isExpanded: $isProfilePreviewExpanded) {
+            VStack(alignment: .leading, spacing: 12) {
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: 16) {
+                        Spacer()
+                        previewPicker
+                    }
 
-                VStack(alignment: .leading, spacing: 10) {
-                    previewHeading
                     previewPicker
                         .frame(maxWidth: .infinity)
                 }
-            }
 
-            ProfilePreview(
-                mode: profilePreviewMode,
-                content: viewModel.selectedPreviewText,
-                currentContent: viewModel.currentContents
-            )
+                ProfilePreview(
+                    mode: profilePreviewMode,
+                    content: viewModel.selectedPreviewText,
+                    currentContent: viewModel.currentContents
+                )
+            }
+            .padding(.top, 10)
+        } label: {
+            previewHeading
         }
-        .frame(minHeight: minHeight, maxHeight: .infinity)
+        .frame(
+            minHeight: isProfilePreviewExpanded ? minHeight : nil,
+            maxHeight: nil,
+            alignment: .topLeading
+        )
+        .accessibilityIdentifier("profilePreviewDisclosure")
     }
 
     private var previewHeading: some View {
@@ -258,16 +296,14 @@ struct ContentView: View {
         HStack {
             Spacer()
             Link(destination: AppLinks.support) {
-                Label(
-                    String(localized: "support.development"),
-                    systemImage: "heart"
-                )
+                Text(String(localized: "support.development"))
             }
             .font(.callout)
             .accessibilityLabel(String(localized: "support.open_link"))
             .accessibilityIdentifier("supportLink")
         }
         .padding(.top, 2)
+        .padding(.bottom, isProfilePreviewExpanded ? 12 : 50)
     }
 
     private var previewPicker: some View {
@@ -317,6 +353,116 @@ struct ContentView: View {
             return .orange
         case .unknown:
             return .secondary
+        }
+    }
+
+    private func configureWindow(_ window: NSWindow, expanded: Bool, animate: Bool) {
+        DispatchQueue.main.async {
+            if expanded {
+                window.styleMask.insert(.resizable)
+                window.minSize = NSSize(width: Layout.minWidth, height: Layout.expandedMinHeight)
+                window.maxSize = NSSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+                resize(window, to: expandedFrame(for: window), animate: animate)
+            } else {
+                window.minSize = Layout.collapsedWindowSize
+                window.maxSize = Layout.collapsedWindowSize
+                window.styleMask.remove(.resizable)
+                resize(window, to: Layout.collapsedWindowSize, animate: animate)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    guard !self.isProfilePreviewExpanded else { return }
+                    window.minSize = Layout.collapsedWindowSize
+                    window.maxSize = Layout.collapsedWindowSize
+                    window.styleMask.remove(.resizable)
+                    resize(window, to: Layout.collapsedWindowSize, animate: false)
+                }
+            }
+        }
+    }
+
+    private var preferredExpandedWindowSize: NSSize {
+        NSSize(
+            width: max(CGFloat(expandedWindowWidth), Layout.defaultExpandedWindowSize.width),
+            height: max(CGFloat(expandedWindowHeight), Layout.defaultExpandedWindowSize.height)
+        )
+    }
+
+    private func expandedFrame(for window: NSWindow) -> NSRect {
+        let screenFrame = window.screen?.visibleFrame ?? NSScreen.main?.visibleFrame
+        let targetSize = preferredExpandedWindowSize
+
+        guard let screenFrame else {
+            let targetWidth = max(window.frame.width, targetSize.width)
+            return NSRect(
+                x: window.frame.origin.x,
+                y: window.frame.origin.y,
+                width: targetWidth,
+                height: targetSize.height
+            )
+        }
+
+        let targetWidth = min(max(window.frame.width, targetSize.width), screenFrame.width)
+        return NSRect(
+            x: min(max(window.frame.origin.x, screenFrame.minX), screenFrame.maxX - targetWidth),
+            y: screenFrame.minY,
+            width: targetWidth,
+            height: screenFrame.height
+        )
+    }
+
+    private func rememberExpandedWindowSize(_ window: NSWindow) {
+        guard window.styleMask.contains(.resizable) else { return }
+        expandedWindowWidth = Double(max(window.frame.width, Layout.defaultExpandedWindowSize.width))
+        expandedWindowHeight = Double(max(window.frame.height, Layout.defaultExpandedWindowSize.height))
+    }
+
+    private func resize(_ window: NSWindow, to targetSize: NSSize, animate: Bool) {
+        guard abs(window.frame.width - targetSize.width) > 1
+            || abs(window.frame.height - targetSize.height) > 1 else {
+            return
+        }
+
+        var newFrame = window.frame
+        let heightDelta = targetSize.height - newFrame.height
+        newFrame.origin.y -= heightDelta
+        newFrame.size = targetSize
+        window.setFrame(newFrame, display: true, animate: animate)
+    }
+
+    private func resize(_ window: NSWindow, to targetFrame: NSRect, animate: Bool) {
+        guard abs(window.frame.origin.x - targetFrame.origin.x) > 1
+            || abs(window.frame.origin.y - targetFrame.origin.y) > 1
+            || abs(window.frame.width - targetFrame.width) > 1
+            || abs(window.frame.height - targetFrame.height) > 1 else {
+            return
+        }
+
+        window.setFrame(targetFrame, display: true, animate: animate)
+    }
+}
+
+private struct WindowReader: NSViewRepresentable {
+    @Binding var window: NSWindow?
+    let onWindowChange: (NSWindow) -> Void
+
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async {
+            updateWindow(from: view)
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {
+        DispatchQueue.main.async {
+            updateWindow(from: nsView)
+        }
+    }
+
+    private func updateWindow(from view: NSView) {
+        guard let resolvedWindow = view.window else { return }
+        if window !== resolvedWindow {
+            window = resolvedWindow
+            onWindowChange(resolvedWindow)
         }
     }
 }
@@ -375,10 +521,8 @@ private struct PackageManagerCard: View {
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-
-                Spacer(minLength: 0)
             }
-            .frame(maxWidth: .infinity, minHeight: 150, alignment: .topLeading)
+            .frame(maxWidth: .infinity, minHeight: 120, alignment: .topLeading)
             .padding(16)
             .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 8))
             .overlay(

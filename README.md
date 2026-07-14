@@ -199,7 +199,7 @@ xcodebuild \
 
 ## Support
 
-If PackageSwitcher saves you time or helps you manage a dual Homebrew/MacPorts setup, you can support development here:
+If PackageSwitcher saves you time or helps you manage a dual Homebrew/MacPorts setup, you can buy me a coffee here:
 
 ☕ https://buymeacoffee.com/blackrockcity
 
